@@ -33,9 +33,18 @@ public:
         return *this;
     }
 
-    bool operator==(std::string& searchDate) {
+   bool isOnDate( std::string& searchDate)  {
         return date == searchDate;
     }
+
+
+ bool isOnDate(int year, int month, int day)  {
+        std::string searchDate = std::to_string(year) + "-" + std::to_string(month) + "-" + std::to_string(day);
+        return date == searchDate;
+    }
+
+
+ 
 
     void printInfo() {
         std::cout << "Дата: " << date << "\n";
@@ -65,9 +74,9 @@ int main() {
         std::cerr << "Помилка: " << e.what() << "\n";
     }
 
-    std::string searchDate = "2023-10-08";
-    if (bill == searchDate) {
-        std::cout << "Рахунок знайдено за датою " << searchDate << ":\n";
+    
+   if (bill.isOnDate(2023, 10, 8)) {
+        std::cout << "Рахунок знайдено за датою 2023-10-08:\n";
         bill.printInfo();
     }
     else {
